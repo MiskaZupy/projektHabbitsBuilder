@@ -2,6 +2,7 @@ package com.example.projekt.Entities;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 
 @Entity
@@ -13,10 +14,24 @@ public class User {
     private String email;
     private String name;
     private String password;
+
+    @OneToMany(mappedBy = "habits")
+    Set<Habits> habitsSet;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;
 
+
+
     public User() {
+    }
+
+    public Set<Habits> getHabitsSet() {
+        return habitsSet;
+    }
+
+    public void setHabitsSet(Set<Habits> habitsSet) {
+        this.habitsSet = habitsSet;
     }
 
     public User(Long id, String email, String name, String password, Collection<Role> roles) {

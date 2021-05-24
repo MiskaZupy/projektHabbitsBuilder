@@ -1,9 +1,6 @@
 package com.example.projekt.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Points {
@@ -12,8 +9,11 @@ public class Points {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    private Long userID;
-    private Long checkinHabbitsId;
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    Checkins checkins;
 
     private int value;
 

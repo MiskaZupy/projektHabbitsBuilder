@@ -2,10 +2,8 @@ package com.example.projekt.Entities;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Habits {
@@ -17,7 +15,8 @@ public class Habits {
     private String name;
     private String description;
 
-
+    @OneToMany(mappedBy = "users")
+    Set<User> userSet;
 
     public Habits() {}
 
@@ -43,5 +42,13 @@ public class Habits {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<User> getUserSet() {
+        return userSet;
+    }
+
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
     }
 }
