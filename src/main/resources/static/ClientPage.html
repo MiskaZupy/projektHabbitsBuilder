@@ -49,7 +49,7 @@
 <div class="top-right" style="margin: 50px">
     <div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 100%">
         <div style="margin: 10px">
-        <h1>Miejsce na coś </h1>
+            <h1>Miejsce na coś </h1>
         </div>
     </div>
 </div>
@@ -60,19 +60,31 @@
     <div style="margin: 10px">
         <div>
             <h2>Twój plan na dziś</h2>
-            <table class="table table-hover">
+            <table class="table table-hover" style="table-layout: fixed">
                 <thead>
                 <tr class="table-primary">
                     <th scope="row">Habit</th>
                     <th>Godzina</th>
                     <th>Postępy</th>
-                    <th>Przycisk</th>
+                    <th></th>
+
+
                 </tr>
                 <tbody>
                 <td>text</td>
                 <td>text</td>
                 <td>text</td>
-                <td>text</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="${}">
+                            <button type="button" class="btn btn-sm btn-primary">Modyfikuj</button>
+                        </a>
+                        <a href="${}">
+                            <button type="button" class="btn btn-sm  btn-primary">Usuń</button>
+                        </a>
+                    </div>
+                </td>
+
 
                 </tbody>
 
@@ -93,7 +105,7 @@
 
         <div>
             <h2>Twój plan na ten tydzień</h2>
-            <table class="table table-hover">
+            <table class="table table-hover" style="table-layout: fixed">
                 <thead>
                 <tr class="table-primary">
                     <th scope="row">Pn</th>
