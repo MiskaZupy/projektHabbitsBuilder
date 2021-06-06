@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users_table")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -15,9 +15,9 @@ public class User {
     private String email;
     private String name;
     private String password;
-
-    @OneToMany(mappedBy = "habits")
-    Set<Habit> habitSet;
+//
+//    @OneToMany(mappedBy = "habits")
+//    private Habit habitSet;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Role> roles;
@@ -26,14 +26,14 @@ public class User {
 
     public User() {
     }
-
-    public Set<Habit> getHabitsSet() {
-        return habitSet;
-    }
-
-    public void setHabitsSet(Set<Habit> habitSet) {
-        this.habitSet = habitSet;
-    }
+//
+//    public Habit getHabitsSet() {
+//        return habitSet;
+//    }
+//
+//    public void setHabitsSet(Set<Habit habitSet) {
+//        this.habitSet = habitSet;
+//    }
 
     public User(Long id, String email, String name, String password, Collection<Role> roles) {
         this.id = id;

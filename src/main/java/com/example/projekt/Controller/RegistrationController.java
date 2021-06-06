@@ -16,26 +16,26 @@ public class RegistrationController {
 
 
     private UserService userService;
-
-
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
-    }
+//
+//
+//    public RegistrationController(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @ModelAttribute("user")
-        public RegistrationDTO userRegistrationDto() {
-            return new RegistrationDTO();
-        }
-
-        @GetMapping
-        public String showRegistrationForm() {
-            return "registration";
-        }
-
-        @PostMapping
-        public String registerUserAccount(@ModelAttribute("user") RegistrationDTO registrationDto) {
-            userService.save(registrationDto);
-            return "redirect:/registration?success";
-        }
+    public RegistrationDTO userRegistrationDto() {
+        return new RegistrationDTO();
     }
+
+    @GetMapping
+    public String showRegistrationForm() {
+        return "registration";
+    }
+
+    @PostMapping
+    public String registerUserAccount(@ModelAttribute("user") RegistrationDTO registrationDto) {
+        userService.save(registrationDto);
+        return "redirect:/registration?success";
+    }
+}
 
