@@ -1,13 +1,13 @@
 package com.example.projekt.Entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
+@Table(name = "users_habits")
 public class UserHabbits {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -16,9 +16,7 @@ public class UserHabbits {
 
     @ManyToOne
     @MapsId("id")
-    Habits habits;
-
-
+    Habit habit;
 
 
     public UserHabbits() {
@@ -40,11 +38,11 @@ public class UserHabbits {
         this.user = user;
     }
 
-    public Habits getHabits() {
-        return habits;
+    public Habit getHabits() {
+        return habit;
     }
 
-    public void setHabits(Habits habits) {
-        this.habits = habits;
+    public void setHabits(Habit habit) {
+        this.habit = habit;
     }
 }

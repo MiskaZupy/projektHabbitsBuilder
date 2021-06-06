@@ -3,10 +3,12 @@ package com.example.projekt.Entities;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class Habits {
+@Table(name = "habits_table")
+public class Habit {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -14,11 +16,21 @@ public class Habits {
 
     private String name;
     private String description;
+    private LocalDateTime todoTime;
+    private String status;
 
     @OneToMany(mappedBy = "users")
     Set<User> userSet;
 
-    public Habits() {}
+    public Habit() {}
+
+    public Habit(Long id, String name, String description, LocalDateTime todoTime, String status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.todoTime = todoTime;
+        this.status =  status;
+    }
 
     public Long getId() {
         return id;
@@ -50,5 +62,17 @@ public class Habits {
 
     public void setUserSet(Set<User> userSet) {
         this.userSet = userSet;
+    }
+
+    public LocalDateTime getTodoTime() { return todoTime; }
+
+    public void setTodoTime(LocalDateTime todoTime) { this.todoTime = todoTime; }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
