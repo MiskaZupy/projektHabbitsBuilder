@@ -49,7 +49,7 @@ public class Habit {
         this.status = status;
     }
 
-        public Habit(String name, String description, LocalDateTime todoTime, String status, User user) {
+    public Habit(String name, String description, LocalDate todoTime, String status, User user) {
         this.id = id;
         this.name = name;
         this.description = description;
