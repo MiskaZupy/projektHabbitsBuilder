@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>MainPage</title>
@@ -18,13 +18,13 @@
         <ul class="navbar-nav mr-auto">
 
             <li>
-                <a class="nav-link" href="index.html">Strona Główna</a>
+                <a class="nav-link" th:href="@{/index}">Strona Główna</a>
             </li>
             <li>
-                <a class="nav-link" href="login.html">Logowanie</a>
+                <a class="nav-link" th:href="@{/login}">Logowanie</a>
             </li>
             <li>
-                <a class="nav-link" href="register.html">Rejestracja</a>
+                <a class="nav-link" th:href="@{/register}">Rejestracja</a>
             </li>
 
         </ul>
@@ -39,8 +39,8 @@
         <div class="top-left">
            <h1>Habits builder</h1>
         <p class="lead">Popraw swoje nawyki</p>
-        <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="location.href='login.html'">Zaloguj się</button><br/>
-        <a href="register.html" style="text-decoration: none;">Lub zarejestruj się</a>
+        <button class="btn btn-lg btn-secondary btn-block" type="button" th:onclick="'window.location.href=\'+@{/login}">Zaloguj się</button><br/>
+        <a th:href="@{/register}" style="text-decoration: none;">Lub zarejestruj się</a>
         </div>
     </div>
 

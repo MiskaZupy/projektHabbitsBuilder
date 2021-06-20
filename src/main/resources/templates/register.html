@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
@@ -19,13 +19,13 @@
             <ul class="navbar-nav mr-auto">
 
                 <li>
-                    <a class="nav-link" href="index.html">Strona Główna</a>
+                    <a class="nav-link" th:href="@{/index}">Strona Główna</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="login.html">Logowanie</a>
+                    <a class="nav-link" th:href="@{/login}">Logowanie</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="register.html">Rejestracja</a>
+                    <a class="nav-link" th:href="@{/register}">Rejestracja</a>
                 </li>
 
             </ul>
@@ -34,39 +34,30 @@
 </nav>
 
 <div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 60%">
-    <form action="" method="post">
+    <form th:action="@{/process_register}" method="post"
+    th:object="${user}">
 
         <div style="margin: 30px; ">
             <h2>Utwórz konto</h2>
             <legend>Podaj dane</legend>
-            <label>Podaj imię</label>
+            <label>Podaj imię i nazwisko</label>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Imię" required>
-            </div>
-            <br/>
-            <label>Podaj nazwisko</label>
-            <div class="form-group">
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Nazwisko" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Imię" th:field="*{name}" required>
             </div>
             <br/>
             <label>Podaj email</label>
             <div class="form-group">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-            </div>
-            <br/>
-            <label>Podaj login</label>
-            <div class="form-group">
-                <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" th:field="*{email}" required>
             </div>
             <br/>
             <label>Podaj hasło</label>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Hasło" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Hasło" th:field="*{password}" required
+                minlength="6" maxlength="10">
             </div>
             <br/>
             <button type="submit" class="btn btn-primary">Utwórz konto</button>
 
-            </fieldset
         </div>
     </form>
 

@@ -6,22 +6,24 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "email", nullable = false, unique = true, length = 45)
     private String email;
-    private String name;
+
+    @Column(name = "password", nullable = false, length = 64)
     private String password;
+
+    @Column(name = "name", nullable = false, length = 20)
+    private String name;
+
 //
 //    @OneToMany(mappedBy = "habits")
 //    private Habit habitSet;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Collection<Role> roles;
-
 
 
     public User() {
@@ -35,12 +37,12 @@ public class User {
 //        this.habitSet = habitSet;
 //    }
 
-    public User(Long id, String email, String name, String password, Collection<Role> roles) {
+    public User(Long id, String email, String name, String password) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
-        this.roles = roles;
+
     }
 
     public User(String email, String password) {
@@ -85,10 +87,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
+
 }
