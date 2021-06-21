@@ -1,10 +1,12 @@
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>YourPage</title>
-    <link rel="stylesheet" href="bootstrap3.css">
+    <link rel="stylesheet" th:href="@{/bootstrap3.css}">
 </head>
 <body>
 
@@ -74,19 +76,19 @@
                 </thead>
                 <c:forEach var="habit" items="${habits}">
 
-                    <c:url var="updateLink" value="LoginServlet">
+                    <c:url var="updateLink" value="ClientServlet">
                         <c:param name="command" value="UPDATE"></c:param>
                         <c:param name="leaveID" value="${habit.id}"></c:param>
                     </c:url>
 
-                    <c:url var="deleteLink" value="LoginServlet">
+                    <c:url var="deleteLink" value="ClientServlet">
                         <c:param name="command" value="DELETE"></c:param>
                         <c:param name="leaveID" value="${habit.id}"></c:param>
                     </c:url>
 
                     <tbody>
                     <td>${habit.name}</td>
-                    <td>${habit.todoTime}</td>
+                    <td>${habit.time}</td>
                     <td>${habit.status}</td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">

@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add new habbit</title>
-    <link rel="stylesheet" href="bootstrap3.css">
+    <link rel="stylesheet" th:href="@{/bootstrap3.css}">
 </head>
 <body>
 
@@ -43,9 +43,11 @@
     <div>Success</div>
 </c:if>
 
-<c:url var="addHabit" value="/addHabit"/>
+
 <div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 60%">
-    <form:form action="${addHabit}" method="post" modelAttribute="habit">
+    <form method="get" action="ClientServlet">
+        <input type="hidden" name="command" value="ADD">
+
 
         <div style="margin: 30px; ">
             <h2>Utwórz nowy habit</h2>
