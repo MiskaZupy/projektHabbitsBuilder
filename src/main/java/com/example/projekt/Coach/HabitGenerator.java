@@ -4,17 +4,22 @@ package com.example.projekt.Coach;
 import com.example.projekt.Entities.Coach;
 import com.example.projekt.Entities.Habit;
 import com.example.projekt.Entities.User;
+import com.example.projekt.Repository.CoachRepository;
 import com.example.projekt.Service.CoachService;
 import com.example.projekt.Service.HabitService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class HabitGenerator {
-    private HabitService habitService ;
-    private CoachService coachService;
+
+    private HabitService habitService = new HabitService();
+
+    private CoachService coachService = new CoachService();
 
     //todo dodać do metody logowania, wywołać
 

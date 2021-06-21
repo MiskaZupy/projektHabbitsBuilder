@@ -11,6 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface CoachRepository extends CrudRepository<Coach, Long> {
-    @Query(value = "select id from Coach")
+    @Query("SELECT id FROM Coach ")
     List<Long> getAllIds();
 }
