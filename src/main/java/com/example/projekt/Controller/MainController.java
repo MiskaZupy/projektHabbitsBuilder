@@ -51,7 +51,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
             String encodecPassword=encoder.encode(user.getPassword());
             user.setPassword(encodecPassword);
             repo.save(user);
-            return "ClientPage";
+            return "login";
 
         }
 }
