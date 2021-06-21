@@ -5,6 +5,7 @@ import com.example.projekt.Entities.Coach;
 import com.example.projekt.Entities.Habit;
 import com.example.projekt.Service.CoachService;
 import com.example.projekt.Service.HabitService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,7 @@ public class HabitController {
     public Optional <Habit> getHabitById(@RequestParam Long id){return  habitService.findById(id);}
 
     @PostMapping("user/habit")
+    @JsonFormat(pattern="yyyy-MM-dd")
     public Habit addHabit(@RequestBody Habit habit){ return habitService.save(habit);}
 
     @PutMapping("coach/habit")

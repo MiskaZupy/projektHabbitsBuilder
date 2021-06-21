@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,26 +16,31 @@ public class Habit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idhabits", nullable = false, unique = true, length = 45)
     private Long id;
-
+    @Column(name = "name", nullable = false, unique = true, length = 45)
     private String name;
+    @Column(name = "description", nullable = false, unique = true, length = 45)
     private String description;
+    @Column(name = "date", nullable = false, unique = true, length = 45)
     private LocalDate todoTime;
+    @Column(name = "time", nullable = false, unique = true, length = 45)
     private LocalTime time;
+    @Column(name = "status", nullable = false, unique = true, length = 45)
     private String status;
+    @Column(name = "points", nullable = false, unique = true, length = 45)
     private int points;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToMany
+    @JoinColumn(name = "idUser")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-//    private Set<User> userSet;
+    @Column(name = "idUser", nullable = false, unique = true, length = 45)
+    private Set<User> user=new HashSet<>();
 
     public Habit() {
     }
 
-    public Habit(Long id, String name, String description, LocalDate todoTime, int points, String status) {
-        this.id = id;
+    public Habit( String name, String description, LocalDate todoTime, int points, String status) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
@@ -42,23 +48,37 @@ public class Habit {
         this.status = status;
     }
 
-    public Habit(String name, String description, LocalDate todoTime, int points, String status) {
+    public Habit(String name, String description, LocalDate todoTime, int points, String status,Set<User> user) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
         this.points = points;
         this.status = status;
+        this.user = user;
     }
-
-    public Habit(String name, String description, LocalDate todoTime,int points, String status, User user) {
+    public Habit(Long id, String name, String description, LocalDate todoTime, LocalTime time, String status, int points) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
+        this.time = time;
+        this.status = status;
+        this.points = points;
+    }
+
+    public Habit(Long id, String name, String description, LocalDate todoTime, LocalTime time, String status, int points, Set<User> user) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.todoTime = todoTime;
+        this.time = time;
         this.status = status;
         this.points = points;
         this.user = user;
     }
+
+
+
 
     public LocalTime getTime() {
         return time;
@@ -92,11 +112,11 @@ public class Habit {
         this.description = description;
     }
 
-    public User getUser() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 

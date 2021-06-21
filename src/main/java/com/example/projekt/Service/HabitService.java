@@ -19,8 +19,6 @@ public class HabitService {
         this.habitRepo = habitRepo;
     }
 
-    public HabitService() {
-    }
 
     public Optional<Habit> findById(Long id) {
         return habitRepo.findById(id);
