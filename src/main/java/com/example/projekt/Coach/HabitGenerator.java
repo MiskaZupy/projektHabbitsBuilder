@@ -1,23 +1,41 @@
 package com.example.projekt.Coach;
 
 
+import com.example.projekt.Entities.Coach;
 import com.example.projekt.Entities.Habit;
 import com.example.projekt.Entities.User;
+import com.example.projekt.Service.CoachService;
 import com.example.projekt.Service.HabitService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class HabitGenerator {
-    private HabitService habitService;
+    private HabitService habitService ;
+    private CoachService coachService;
+
+    //todo dodać do metody logowania, wywołać
 
     private boolean checkIfNotEmpty (User user){
         return habitService.findAllByUser(user) == null;
     }
+    private List<Long> getIDList() {return  coachService.findAllHabs();}
 
-    private void addAddIfNotHabit(User user){
-        if(checkIfNotEmpty(user) == true){
-            int random_id =(int)(Math.random() * 10);
-
-        }else {
-            // do nothing
+    public void addAddIfEmpty(User user) throws Exception {
+        List<Long> id_list = getIDList();
+        if(checkIfNotEmpty(user)){
+            Random random =  new Random();
+            Long id = id_list.get(random.nextInt(id_list.size()));
+            if (coachService.findById(id).isPresent()){
+                Coach coachHab = coachService.findById(id).get();
+                   Habit newHabit = new Habit(coachHab.getName(),coachHab.getDescription(),
+                           LocalDate.now().plusDays(3), coachHab.getPoints(), "undone", user);
+                   habitService.save(newHabit);
+            }else {
+                throw new Exception("Błąd przy losowaniu habitu");
+            }
         }
     }
 

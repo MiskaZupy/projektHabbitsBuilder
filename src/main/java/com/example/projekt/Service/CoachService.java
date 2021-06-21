@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CoachService {
@@ -15,7 +16,6 @@ public class CoachService {
     @Autowired
     public CoachService (CoachRepository coachRepository){this.coachRepository = coachRepository;}
     public Iterable<Coach> findAll() {return coachRepository.findAll(); }
-//    @Query("select p.id from #{coachhabits} p")
-//    public List<Long> getAllIds(){};
-
+    public List<Long> findAllHabs(){return coachRepository.getAllIds();}
+    public Optional<Coach> findById(Long id){return coachRepository.findById(id);}
 }

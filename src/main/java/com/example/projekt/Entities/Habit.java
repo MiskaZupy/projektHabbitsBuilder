@@ -43,7 +43,6 @@ public class Habit {
     }
 
     public Habit(String name, String description, LocalDate todoTime, int points, String status) {
-        this.id = id;
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
@@ -51,12 +50,13 @@ public class Habit {
         this.status = status;
     }
 
-    public Habit(String name, String description, LocalDate todoTime, String status, User user) {
+    public Habit(String name, String description, LocalDate todoTime,int points, String status, User user) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
         this.status = status;
+        this.points = points;
         this.user = user;
     }
 
