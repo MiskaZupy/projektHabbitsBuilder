@@ -3,9 +3,10 @@ package com.example.projekt.Entities;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import java.util.Set;
 
 @Entity
@@ -18,7 +19,8 @@ public class Habit {
 
     private String name;
     private String description;
-    private LocalDateTime todoTime;
+    private LocalDate todoTime;
+    private LocalTime time;
     private String status;
     private int points;
 
@@ -31,7 +33,7 @@ public class Habit {
     public Habit() {
     }
 
-    public Habit(Long id, String name, String description, LocalDateTime todoTime, int points, String status) {
+    public Habit(Long id, String name, String description, LocalDate todoTime, int points, String status) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,8 +42,7 @@ public class Habit {
         this.status = status;
     }
 
-    public Habit(String name, String description, LocalDateTime todoTime, int points, String status) {
-        this.id = id;
+    public Habit(String name, String description, LocalDate todoTime, int points, String status) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
@@ -49,13 +50,22 @@ public class Habit {
         this.status = status;
     }
 
-        public Habit(String name, String description, LocalDateTime todoTime, String status, User user) {
+    public Habit(String name, String description, LocalDate todoTime,int points, String status, User user) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
         this.status = status;
+        this.points = points;
         this.user = user;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public Long getId() {
@@ -90,11 +100,11 @@ public class Habit {
         this.user = user;
     }
 
-    public LocalDateTime getTodoTime() {
+    public LocalDate getTodoTime() {
         return todoTime;
     }
 
-    public void setTodoTime(LocalDateTime todoTime) {
+    public void setTodoTime(LocalDate todoTime) {
         this.todoTime = todoTime;
     }
 
@@ -113,4 +123,6 @@ public class Habit {
     public void setPoints(int points) {
         this.points = points;
     }
+
+
 }

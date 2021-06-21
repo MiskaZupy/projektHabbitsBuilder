@@ -1,9 +1,12 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>YourPage</title>
-    <link rel="stylesheet" href="bootstrap3.css">
+    <link rel="stylesheet" th:href="@{/bootstrap3.css}">
 </head>
 <body>
 
@@ -70,25 +73,38 @@
 
 
                 </tr>
-                <tbody>
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="${}">
-                            <button type="button" class="btn btn-sm btn-primary">Modyfikuj</button>
-                        </a>
-                        <a href="${}">
-                            <button type="button" class="btn btn-sm  btn-primary">Usuń</button>
-                        </a>
-                    </div>
-                </td>
-
-
-                </tbody>
-
                 </thead>
+                <c:forEach var="habit" items="${habits}">
+
+                    <c:url var="updateLink" value="ClientServlet">
+                        <c:param name="command" value="UPDATE"></c:param>
+                        <c:param name="leaveID" value="${habit.id}"></c:param>
+                    </c:url>
+
+                    <c:url var="deleteLink" value="ClientServlet">
+                        <c:param name="command" value="DELETE"></c:param>
+                        <c:param name="leaveID" value="${habit.id}"></c:param>
+                    </c:url>
+
+                    <tbody>
+                    <td>${habit.name}</td>
+                    <td>${habit.time}</td>
+                    <td>${habit.status}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="${updateLink}">
+                                <button type="button" class="btn btn-sm btn-primary">Modyfikuj</button>
+                            </a>
+                            <a href="${deleteLink}">
+                                <button type="button" class="btn btn-sm  btn-primary">Usuń</button>
+                            </a>
+                        </div>
+                    </td>
+
+
+                    </tbody>
+                </c:forEach>
+
             </table>
         </div>
 
@@ -117,16 +133,19 @@
                     <th>Nd</th>
 
                 </tr>
+                <c:forEach var="habit" items="${weeklyHabits}">
+
                 <tbody>
 
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
-                <td>text</td>
+                <td>${habit}</td>
+                <td>${habit}</td>
+                <td>${habit}</td>
+                <td>${habit}</td>
+                <td>${habit}</td>
+                <td>${habit}</td>
                 </tbody>
+
+                </c:forEach>
 
                 </thead>
             </table>

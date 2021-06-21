@@ -10,6 +10,7 @@ import java.util.Set;
 public class User {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name = "iduser", nullable = false, unique = true, length = 45)
     private Long id;
 
     @Column(name = "email", nullable = false, unique = true, length = 45)
@@ -21,9 +22,9 @@ public class User {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-//
-//    @OneToMany(mappedBy = "habits")
-//    private Habit habitSet;
+    @Column(name = "idHabits")
+    @OneToMany()
+    Set<Habit> habitsSet;
 
 
     public User() {

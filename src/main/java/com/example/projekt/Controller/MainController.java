@@ -32,6 +32,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
             model.addAttribute("user", new User());
             return "register";
         }
+        @GetMapping("/ClientPage")
+        public String clientPage() {
+
+            return "ClientPage";
+        }
+
+        @GetMapping("/ClientServlet")
+        public  String clientServlet(){
+            return "ClientServlet";
+        }
+
+
+
         @PostMapping("/process_register")
         public String processRegistration(User user){
             BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
@@ -41,5 +54,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
             return "ClientPage";
 
         }
-        }
+}
 
