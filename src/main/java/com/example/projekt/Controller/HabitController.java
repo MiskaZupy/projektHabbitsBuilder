@@ -1,6 +1,5 @@
 package com.example.projekt.Controller;
 
-
 import com.example.projekt.Entities.Coach;
 import com.example.projekt.Entities.Habit;
 import com.example.projekt.Service.CoachService;

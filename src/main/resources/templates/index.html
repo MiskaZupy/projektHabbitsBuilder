@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MainPage</title>
-    <link rel="stylesheet" th:href="@{/bootstrap3}">
+    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -42,7 +42,7 @@
                 <p class="lead">Popraw swoje nawyki</p>
 
                 <form th:action="@{/login}" method="post">
-                    <button class="btn btn-lg btn-secondary btn-block" type="button">Zaloguj się</button>
+                    <button class="btn btn-lg btn-secondary btn-block" type="submit">Zaloguj się</button>
                     <br/>
                 </form>
                 <a th:href="@{/register}" style="text-decoration: none;">Lub zarejestruj się</a>

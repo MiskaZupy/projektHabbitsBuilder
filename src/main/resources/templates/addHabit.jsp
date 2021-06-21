@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add new habbit</title>
-    <link rel="stylesheet" th:href="@{/bootstrap3}">
+    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 
@@ -58,51 +58,14 @@
             </div>
 
 
-            <label class="mt-4">Wybierz dni</label>
+            <label class="mt-4">Wybierz date</label>
             <div style="display: flex;flex-direction: row;justify-content: center;">
-
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Poniedziałek
-                    </label>
-                </div>
-
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1">
-                    <label class="form-check-label" for="flexCheckChecked1">
-                        Wtorek
-                    </label>
-                </div>
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2">
-                    <label class="form-check-label" for="flexCheckChecked2">
-                        Środa
-                    </label>
-                </div>
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3">
-                    <label class="form-check-label" for="flexCheckChecked3">
-                        Czwartek
-                    </label>
-                </div>
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4">
-                    <label class="form-check-label" for="flexCheckChecked4">
-                        Piątek
-                    </label>
-                </div>
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked5">
-                    <label class="form-check-label" for="flexCheckChecked5">
-                        Sobota
-                    </label>
-                </div>
-                <div class="form-check" style="margin: 10px">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked6">
-                    <label class="form-check-label" for="flexCheckChecked6">
-                        Niedziela
-                    </label>
+                <div>
+                    <label for="start">Data początkowa</label>
+                    <input type="date" id="start" name="start"
+                           value="today"
+                           min="today" max="2021-12-31"
+                           required >
                 </div>
             </div>
             <br/>

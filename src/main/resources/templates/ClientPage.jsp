@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>YourPage</title>
-    <link rel="stylesheet" th:href="@{/bootstrap3}">
+    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 
