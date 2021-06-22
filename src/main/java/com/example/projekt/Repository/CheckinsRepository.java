@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CheckinsRepository extends CrudRepository<Checkins, Long> {
 
+    @Query("SELECT u FROM Checkins u WHERE u.user = ?1")
+    public Iterable<Checkins> getAllByUser(Long idUser);
+
 }

@@ -9,5 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface PointsRepository extends CrudRepository<Points, Long> {
+    @Query("SELECT u FROM Points u WHERE u.user = ?1")
+    public Iterable<Points> getAllByUser(Long idUser);
 
 }
