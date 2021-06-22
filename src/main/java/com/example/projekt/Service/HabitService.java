@@ -28,7 +28,7 @@ public class HabitService {
         return habitRepo.findAll();
     }
 
-    public Iterable<Habit> findAllByUser(User user) {return habitRepo.getAllByUser(user);}
+    public Iterable<Habit> findAllByUser(User user) {return habitRepo.getByUser(user);}
 
     public Iterable<Habit> findAllByUserTime(User user, LocalDate time) {return habitRepo.getAllByUserAndTodoTime(user,time);}
 

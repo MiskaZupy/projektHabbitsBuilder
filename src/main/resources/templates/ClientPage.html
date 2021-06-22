@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
 <head>
     <meta charset="UTF-8">
     <title>YourPage</title>
-    <link rel="stylesheet" th:href="@{/bootstrap3}">
+    <link rel="stylesheet"  href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Habits Builder</a>
+        <a class="navbar-brand" href="#" sec:authentication="name">Habits Builder</a>
         <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarColor01" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -19,17 +23,17 @@
 
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="ClientPage.html">Twój profil</a>
+                    <a class="nav-link" th:href="@{/ClientPage}">Twój profil</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="clientPrizes.html">Twoje osiągnięcia</a>
+                    <a class="nav-link" th:href="@{/clientPrizes}">Twoje osiągnięcia</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="addHabit.html">Dodaj Habit</a>
+                    <a class="nav-link" th:href="@{/addHabit}">Dodaj Habit</a>
                 </li>
 
                 <li>
-                    <a class="nav-link" href="index.html">Wyloguj się</a>
+                    <a class="nav-link" th:href="@{/modifyHabit}">Wyloguj się</a>
                 </li>
 
 
@@ -38,19 +42,10 @@
     </div>
 </nav>
 
-
 <div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 50%; display: inline-block ">
 
-    <div style="margin: 10px">
+    <div style="margin: 10px"  >
         <h1>Witaj [[${#request.remoteUser}]]!</h1>
-    </div>
-</div>
-
-<div class="top-right" style="margin: 50px">
-    <div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 100%">
-        <div style="margin: 10px">
-            <h1>Miejsce na coś </h1>
-        </div>
     </div>
 </div>
 
@@ -64,31 +59,28 @@
                 <thead>
                 <tr class="table-primary">
                     <th scope="row">Habit</th>
+                    <th>Opis</th>
+                    <th>Data</th>
                     <th>Godzina</th>
-                    <th>Postępy</th>
+
                     <th></th>
 
 
                 </tr>
                 </thead>
-                <c:forEach var="habit" items="${habits}">
-
-                    <c:url var="updateLink" value="ClientServlet">
-                        <c:param name="command" value="UPDATE"></c:param>
-                        <c:param name="leaveID" value="${habit.id}"></c:param>
-                    </c:url>
-
-                    <c:url var="deleteLink" value="ClientServlet">
-                        <c:param name="command" value="DELETE"></c:param>
-                        <c:param name="leaveID" value="${habit.id}"></c:param>
-                    </c:url>
 
                     <tbody>
-                    <td>${habit.name}</td>
-                    <td>${habit.time}</td>
-                    <td>${habit.status}</td>
+                    <tr th:each="habit :${habit}">
+                    <td th:text="${habit.name}">name</td>
+                    <td th:text="${habit.description}">describtion</td>
+                    <td th:text="${habit.todoTime}">time</td>
+
+                    <td th:text="${habit.time}">time</td>
+
                     <td>
+
                         <div class="btn-group" role="group" aria-label="Basic example">
+                            <form action="modifyHabit.html"></form>
                             <a href="${updateLink}">
                                 <button type="button" class="btn btn-sm btn-primary">Modyfikuj</button>
                             </a>
@@ -97,10 +89,10 @@
                             </a>
                         </div>
                     </td>
-
+                    </tr>
 
                     </tbody>
-                </c:forEach>
+
 
             </table>
         </div>
@@ -111,44 +103,6 @@
 
 </div>
 
-
-<div class="card text-white bg-secondary mb-3" style=" margin: 10px; ">
-
-    <div style="margin: 10px">
-
-        <div>
-            <h2>Twój plan na ten tydzień</h2>
-            <table class="table table-hover" style="table-layout: fixed">
-                <thead>
-                <tr class="table-primary">
-                    <th scope="row">Pn</th>
-                    <th>Wt</th>
-                    <th>Śr</th>
-                    <th>Czw</th>
-                    <th>Pt</th>
-                    <th>Sb</th>
-                    <th>Nd</th>
-
-                </tr>
-                <c:forEach var="habit" items="${weeklyHabits}">
-
-                <tbody>
-
-                <td>${habit}</td>
-                <td>${habit}</td>
-                <td>${habit}</td>
-                <td>${habit}</td>
-                <td>${habit}</td>
-                <td>${habit}</td>
-                </tbody>
-
-                </c:forEach>
-
-                </thead>
-            </table>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
