@@ -14,7 +14,7 @@ public interface HabbitsRepository extends CrudRepository<Habit, Long> {
 
     public List<Habit> getByUser(User user);
 
-    public Iterable<Habit> getAllByUserAndTodoTime(User user,LocalDate time);
+
 
     Habit getHabitById(Long id);
 }

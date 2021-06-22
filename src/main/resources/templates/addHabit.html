@@ -1,8 +1,7 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Add new habbit</title>
@@ -21,38 +20,36 @@
 
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="ClientPage.html">Twój profil</a>
+                    <a class="nav-link" th:href="@{/ClientPage}">Twój profil</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="clientPrizes.html">Twoje osiągnięcia</a>
+                    <a class="nav-link" th:href="@{/clientPrizes}">Twoje osiągnięcia</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="addHabit.html">Dodaj Habit</a>
+                    <a class="nav-link" th:href="@{/addHabit}">Dodaj Habit</a>
                 </li>
 
                 <li>
-                    <a class="nav-link" href="index.html">Wyloguj się</a>
+                    <a class="nav-link" th:href="@{/index}">Wyloguj się</a>
                 </li>
-
             </ul>
         </div>
     </div>
 </nav>
-
-
-
-
 <div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 60%">
-    <form method="get" action="ClientServlet">
-        <input type="hidden" name="command" value="ADD">
-
+    <form th:action="@{/proces_add}" th:method="post" th:object="${habit}">
 
         <div style="margin: 30px; ">
             <h2>Utwórz nowy habit</h2>
             <legend>Podaj dane</legend>
             <label>Podaj nazwę</label>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa" th:field="*{name}" required>
+            </div>
+            <br/>
+            <label>Podaj opis</label>
+            <div class="form-group">
+                <input type="text" class="form-control" id="desc" name="desc" placeholder="Opis" th:field="*{description}" required>
             </div>
 
 
@@ -60,31 +57,39 @@
             <div>
                 <div>
                     <label for="start">Data początkowa</label><br/>
-                    <input type="date" id="start" name="start"
+                    <input type="date" id="start" th:name="start"
                            value="today"
                            min="today" max="2021-12-31"
+                           th:field="*{todoTime}"
+
                            required >
                 </div>
             </div>
             <br/>
 
-            <fieldset class="form-group" >
-                <label>Podaj czas trwania aktywności (w minutach)</label> <br/>
-                <input type="range" min="1" max="120" value="10" name="time" class="form-range" id="time" oninput="this.nextElementSibling.value = this.value"
-                       required>
-                <output>10</output>
-            </fieldset>
-            <br/>
+
             <label>Podaj godzinę rozpoczęcia</label>
             <br/>
-            <input type="time" id="appt" name="appt"
-                   min="00:00" max="23:59" required>
+            <input type="time" id="appt" th:name="appt"  th:field="*{time}"
+                   min="00:00" max="23:59" required  >
+
+            <br/>
+            <br/>
+            <label>Podaj punkty</label>
+            <div class="form-group">
+                <input type="number" class="form-control" min="0" max="10" id="points" name="points" placeholder="Nazwa" th:field="*{points}" required>
+            </div>
+
 
             <br/>
             <br/>
             <button type="submit" class="btn btn-primary">Utwórz habit</button>
 
             </fieldset>
+
+
+
+
         </div>
     </form>
 

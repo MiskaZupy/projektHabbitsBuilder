@@ -38,7 +38,7 @@ public class HabitController {
     @PutMapping("coach/habit")
     public Habit updateHabit(@RequestParam Habit habit){return  habitService.save(habit);}
 
-    @PatchMapping("user/habit{id}")
+    @PatchMapping("user/habit/{id}")
     public  Habit updateUserHabit (@RequestBody Map<String, Object>updates, @PathVariable("id")Long id){
         if(habitService.partialUpdateById(id, updates) == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no such task");

@@ -30,10 +30,6 @@ public class HabitService {
 
     public Iterable<Habit> findAllByUser(User user) {return habitRepo.getByUser(user);}
 
-    public Iterable<Habit> findAllByUserTime(User user, LocalDate time) {return habitRepo.getAllByUserAndTodoTime(user,time);}
-
-
-
 
     public Habit save(Habit habit) {
         return habitRepo.save(habit);

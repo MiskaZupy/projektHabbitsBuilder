@@ -33,7 +33,7 @@
                 </li>
 
                 <li>
-                    <a class="nav-link" th:href="@{/modifyHabit}">Wyloguj się</a>
+                    <a class="nav-link" th:href="@{/index}">Wyloguj się</a>
                 </li>
 
 
@@ -42,7 +42,7 @@
     </div>
 </nav>
 
-<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 50%; display: inline-block ">
+<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 90%; display: inline-block ">
 
     <div style="margin: 10px"  >
         <h1>Witaj [[${#request.remoteUser}]]!</h1>
@@ -50,7 +50,7 @@
 </div>
 
 
-<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 50%; display: inline-grid">
+<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 90%; display: inline-grid">
 
     <div style="margin: 10px">
         <div>
@@ -80,13 +80,15 @@
                     <td>
 
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <form action="modifyHabit.html"></form>
-                            <a href="${updateLink}">
-                                <button type="button" class="btn btn-sm btn-primary">Modyfikuj</button>
-                            </a>
-                            <a href="${deleteLink}">
-                                <button type="button" class="btn btn-sm  btn-primary">Usuń</button>
-                            </a>
+                            <form th:action="@{'/modifyHabit/{id}'(id=${habit.id})}"  th:method="get">
+                                <button type="submit" class="btn btn-sm btn-primary">Modyfikuj</button>
+                            </form>
+
+                            <form  action="#" th:action="@{'/delete/{id}'(id=${habit.id})}" th:method="delete" >
+
+                                <button type="submit" class="btn btn-sm  btn-primary">Usuń</button>
+                            </form>
+
                         </div>
                     </td>
                     </tr>
