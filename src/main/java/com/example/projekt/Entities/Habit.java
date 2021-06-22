@@ -22,7 +22,7 @@ public class Habit {
     private Long id;
     @Column(name = "name", nullable = false, unique = true, length = 45)
     private String name;
-    @Column(name = "description", nullable = false, unique = true, length = 45)
+    @Column(name = "description", nullable = false, unique = true, length = 500)
     private String description;
     @Column(name = "date", nullable = false, unique = true, length = 45)
     private String todoTime;
