@@ -81,7 +81,7 @@ public class MainController {
     public String processAdd(@AuthenticationPrincipal User user, Habit habit , Model model){
 
         habit.setStatus("undone");
-        habit.setUser((Set<User>) user);
+        habit.setUser(user);
         habitRepo.save(habit);
         model.addAttribute("user", user);
         Iterable<Habit> habit1 = habitRepo.getByUser(user);
@@ -105,7 +105,7 @@ public class MainController {
 
         habit.setId(id);
 
-        habit.setUser((Set<User>) user);
+        habit.setUser( user);
         habitRepo.save(habit);
 
         model.addAttribute("user", user);
