@@ -1,3 +1,5 @@
+
+
 package com.example.projekt.Entities;
 
 import org.hibernate.annotations.OnDelete;
@@ -23,9 +25,9 @@ public class Habit {
     @Column(name = "description", nullable = false, unique = true, length = 45)
     private String description;
     @Column(name = "date", nullable = false, unique = true, length = 45)
-    private LocalDate todoTime;
+    private String todoTime;
     @Column(name = "time", nullable = false, unique = true, length = 45)
-    private LocalTime time;
+    private String time;
     @Column(name = "status", nullable = false, unique = true, length = 45)
     private String status;
     @Column(name = "points", nullable = false, unique = true, length = 45)
@@ -40,51 +42,48 @@ public class Habit {
     public Habit() {
     }
 
-    public Habit( String name, String description, LocalDate todoTime, int points, String status) {
-        this.name = name;
-        this.description = description;
-        this.todoTime = todoTime;
-        this.points = points;
-        this.status = status;
-    }
+//    public Habit( String name, String description, String todoTime, int points, String status) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.points = points;
+//        this.status = status;
+//    }
 
-    public Habit(String name, String description, LocalDate todoTime, int points, String status,Set<User> user) {
-        this.name = name;
-        this.description = description;
-        this.todoTime = todoTime;
-        this.points = points;
-        this.status = status;
-        this.user = user;
-    }
-    public Habit(Long id, String name, String description, LocalDate todoTime, LocalTime time, String status, int points) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.todoTime = todoTime;
-        this.time = time;
-        this.status = status;
-        this.points = points;
-    }
-
-    public Habit(Long id, String name, String description, LocalDate todoTime, LocalTime time, String status, int points, Set<User> user) {
-        this.id = id;
+//    public Habit(String name, String description, String todoTime, int points, String status,Set<User> user) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.points = points;
+//        this.status = status;
+//        this.user = user;
+//    }
+    public Habit(String name, String description, String todoTime, String time, String status, int points) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
         this.time = time;
         this.status = status;
         this.points = points;
-        this.user = user;
     }
 
+//    public Habit( String name, String description, String todoTime, String time, String status, int points, Set<User> user) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.time = time;
+//        this.status = status;
+//        this.points = points;
+//    }
 
 
 
-    public LocalTime getTime() {
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -120,11 +119,11 @@ public class Habit {
         this.user = user;
     }
 
-    public LocalDate getTodoTime() {
+    public String getTodoTime() {
         return todoTime;
     }
 
-    public void setTodoTime(LocalDate todoTime) {
+    public void setTodoTime(String todoTime) {
         this.todoTime = todoTime;
     }
 

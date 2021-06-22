@@ -17,6 +17,6 @@ public class CoachService {
     public CoachService (CoachRepository coachRepository){this.coachRepository = coachRepository;}
 
     public Iterable<Coach> findAll() {return coachRepository.findAll(); }
-    public Iterable<Long> findAllHabs(){return coachRepository.getAllIds();}
+    public Iterable<Coach> findAllHabs(){return coachRepository.getAllIds();}
     public Optional<Coach> findById(Long id){return coachRepository.findById(id);}
 }

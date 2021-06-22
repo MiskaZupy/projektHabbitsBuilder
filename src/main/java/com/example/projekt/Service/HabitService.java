@@ -51,7 +51,7 @@ public class HabitService {
         } else if (updates.containsKey("name")) {
             habit.setName(updates.get("name").toString());
         } else if (updates.containsKey("toDoTime")) {
-            habit.setTodoTime(LocalDate.parse(updates.get("toDoTime").toString()));
+            habit.setTodoTime(updates.get("toDoTime").toString());
         }else if (updates.containsKey("description")){
             habit.setDescription(updates.get("description").toString());
         }

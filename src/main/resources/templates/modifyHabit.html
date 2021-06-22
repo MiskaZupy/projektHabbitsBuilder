@@ -1,8 +1,8 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+
+>
 <head>
     <meta charset="UTF-8">
     <title>Modify your habbit</title>
@@ -22,17 +22,17 @@
 
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="ClientPage.html">Twój profil</a>
+                    <a class="nav-link" th:href="@{/ClientPage}">Twój profil</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="clientPrizes.html">Twoje osiągnięcia</a>
+                    <a class="nav-link" th:href="@{/clientPrizes}">Twoje osiągnięcia</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="addHabit.html">Dodaj Habit</a>
+                    <a class="nav-link" th:href="@{/addHabit}">Dodaj Habit</a>
                 </li>
 
                 <li>
-                    <a class="nav-link" href="index.html">Wyloguj się</a>
+                    <a class="nav-link" th:href="@{/index}">Wyloguj się</a>
                 </li>
 
 
@@ -42,57 +42,73 @@
 </nav>
 
 <div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 60%">
-    <form action="ClientServlet" method="get">
+    <form th:action="@{'/modifyThisHabit/{id}'(id=${habit.id})}" th:method="patch" th:object="${habit}">
 
-        <input type="hidden" name="command" value="UPDATE"/>
-        <input type="hidden" name="id" value="${HABIT.id}"/>
 
         <div style="margin: 30px; ">
             <h2>Zmodyfikuj habit</h2>
             <legend>Podaj dane</legend>
             <label>Podaj nazwę</label>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa" th:value="${name}"
+                       th:field="*{name}"
+                       required>
             </div>
-
+            <br/>
             <label>Podaj opis</label>
             <div class="form-group">
-                <input type="text" class="form-control" id="describ" name="name" placeholder="Opis" required>
+                <input type="text" class="form-control" id="desc" name="desc" placeholder="Opis"
+                       th:field="*{description}" th:value="${description}" required>
             </div>
-
 
 
             <label class="mt-4">Wybierz date</label>
-            <div style="display: flex;flex-direction: row;justify-content: center;">
+            <div>
                 <div>
-                    <label for="start">Data początkowa</label>
-                    <input type="date" id="start" name="start"
+                    <label for="start">Data początkowa</label><br/>
+                    <input type="date" id="start" th:name="start"
                            value="today"
                            min="today" max="2021-12-31"
-                           required >
+                           th:field="*{todoTime}"
+
+                           required>
                 </div>
             </div>
             <br/>
-            </fieldset>
-            <fieldset class="form-group" >
-                <label>Podaj czas trwania aktywności (w minutach)</label> <br/>
-                <input type="range" min="1" max="120" value="10" name="time" class="form-range" id="time" oninput="this.nextElementSibling.value = this.value"
-                       required>
-                <output>10</output>
-            </fieldset>
-            <br/>
+
+
             <label>Podaj godzinę rozpoczęcia</label>
             <br/>
-            <input type="time" id="appt" name="appt"
+            <input type="time" id="appt" th:name="appt" th:field="*{time}"
                    min="00:00" max="23:59" required>
 
             <br/>
             <br/>
-            <button type="submit" class="btn btn-primary">Utwórz habit</button>
+            <label>Podaj punkty</label>
+            <div class="form-group">
+                <input type="number" class="form-control" min="0" max="10" id="points" name="points" placeholder="Punkty"
+                       th:value="${points}" th:field="*{points}" required>
+            </div>
+
+            <br/>
+            <br/>
+            <label>Zmień status</label>
+            <div class="form-group">
+                <input type="number" class="form-control" min="0" max="10" id="status" name="status" placeholder="Status"
+                       th:value="${status}" th:field="*{status}" required>
+            </div>
+
+
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Zmodyfikuj habit</button>
 
             </fieldset>
         </div>
+
+
     </form>
 
+</div>
 </body>
 </html>
