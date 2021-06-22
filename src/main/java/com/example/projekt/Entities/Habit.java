@@ -33,11 +33,10 @@ public class Habit {
     @Column(name = "points", nullable = false, unique = true, length = 45)
     private int points;
 
-    @ManyToMany
-    @JoinColumn(name = "idUser")
+    @ManyToOne
+    @JoinColumn()
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @Column(name = "idUser", nullable = false, unique = true, length = 45)
-    private Set<User> user=new HashSet<>();
+    private User user;
 
     public Habit() {
     }
@@ -111,11 +110,11 @@ public class Habit {
         this.description = description;
     }
 
-    public Set<User> getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Set<User> user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
