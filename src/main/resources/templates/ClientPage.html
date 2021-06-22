@@ -1,12 +1,9 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>YourPage</title>
-    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap3}">
 </head>
 <body>
 
@@ -45,7 +42,7 @@
 <div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 50%; display: inline-block ">
 
     <div style="margin: 10px">
-        <h1>Witaj Brad Pitt!</h1>
+        <h1>Witaj [[${#request.remoteUser}]]!</h1>
     </div>
 </div>
 
