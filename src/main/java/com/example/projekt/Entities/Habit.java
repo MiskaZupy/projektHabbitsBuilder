@@ -65,6 +65,15 @@ public class Habit {
         this.status = status;
         this.points = points;
     }
+    public Habit(String name, String description, String todoTime, String time, String status, int points, User user) {
+        this.name = name;
+        this.description = description;
+        this.todoTime = todoTime;
+        this.time = time;
+        this.status = status;
+        this.points = points;
+        this.user =  user;
+    }
 
 //    public Habit( String name, String description, String todoTime, String time, String status, int points, Set<User> user) {
 //        this.name = name;

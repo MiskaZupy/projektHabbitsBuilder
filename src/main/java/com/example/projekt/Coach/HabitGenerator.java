@@ -25,7 +25,7 @@ public class HabitGenerator {
 
     private boolean checkIfNotEmpty (User user){
         // todo conect habits with users
-        return IterableUtils.size(habitService.findAll()) == 0;
+        return IterableUtils.size(habitService.findAllByUser(user)) == 0;
     }
     private Iterable<Coach> getCoachHabList() { return  coachService.findAllHabs();}
 
@@ -42,7 +42,7 @@ public class HabitGenerator {
             if (coachService.findById(id).isPresent()){
                 Coach coachHab =  coachService.findById(id).get();
                   habitService.save(new Habit(coachHab.getName(),coachHab.getDescription(),
-                           (LocalDate.now().plusDays(3)).toString(),"12:00", "undone",coachHab.getPoints()));
+                           (LocalDate.now().plusDays(3)).toString(),"12:00", "undone",coachHab.getPoints(), user));
             }else {
                 throw new Exception("Błąd przy losowaniu habitu");
             }
