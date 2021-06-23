@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
 @EnableWebSecurity
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
@@ -51,8 +53,10 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .usernameParameter("login")
-                .defaultSuccessUrl("/ClientServlet")
+                .defaultSuccessUrl("/ClientPage")
                 .permitAll()
+                .and()
+                .rememberMe().userDetailsService(userDetailsService())
                 .and()
                 .logout().logoutSuccessUrl("/login").permitAll()
                 .and()

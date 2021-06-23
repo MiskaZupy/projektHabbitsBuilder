@@ -1,3 +1,5 @@
+
+
 package com.example.projekt.Entities;
 
 import org.hibernate.annotations.OnDelete;
@@ -7,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,56 +18,80 @@ public class Habit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idhabits", nullable = false, unique = true, length = 45)
     private Long id;
-
+    @Column(name = "name", nullable = false, unique = true, length = 45)
     private String name;
+    @Column(name = "description", nullable = false, unique = true, length = 500)
     private String description;
-    private LocalDate todoTime;
-    private LocalTime time;
+    @Column(name = "date", nullable = false, unique = true, length = 45)
+    private String todoTime;
+    @Column(name = "time", nullable = false, unique = true, length = 45)
+    private String time;
+    @Column(name = "status", nullable = false, unique = true, length = 45)
     private String status;
+    @Column(name = "points", nullable = false, unique = true, length = 45)
     private int points;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn()
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
-//    private Set<User> userSet;
 
     public Habit() {
     }
 
-    public Habit(Long id, String name, String description, LocalDate todoTime, int points, String status) {
-        this.id = id;
+//    public Habit( String name, String description, String todoTime, int points, String status) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.points = points;
+//        this.status = status;
+//    }
+
+//    public Habit(String name, String description, String todoTime, int points, String status,Set<User> user) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.points = points;
+//        this.status = status;
+//        this.user = user;
+//    }
+    public Habit(String name, String description, String todoTime, String time, String status, int points) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
-        this.points = points;
+        this.time = time;
         this.status = status;
+        this.points = points;
     }
-
-    public Habit(String name, String description, LocalDate todoTime, int points, String status) {
+    public Habit(String name, String description, String todoTime, String time, String status, int points, User user) {
         this.name = name;
         this.description = description;
         this.todoTime = todoTime;
-        this.points = points;
-        this.status = status;
-    }
-
-    public Habit(String name, String description, LocalDate todoTime,int points, String status, User user) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.todoTime = todoTime;
+        this.time = time;
         this.status = status;
         this.points = points;
-        this.user = user;
+        this.user =  user;
     }
 
-    public LocalTime getTime() {
+//    public Habit( String name, String description, String todoTime, String time, String status, int points, Set<User> user) {
+//        this.name = name;
+//        this.description = description;
+//        this.todoTime = todoTime;
+//        this.time = time;
+//        this.status = status;
+//        this.points = points;
+//    }
+
+
+
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -100,11 +127,11 @@ public class Habit {
         this.user = user;
     }
 
-    public LocalDate getTodoTime() {
+    public String getTodoTime() {
         return todoTime;
     }
 
-    public void setTodoTime(LocalDate todoTime) {
+    public void setTodoTime(String todoTime) {
         this.todoTime = todoTime;
     }
 

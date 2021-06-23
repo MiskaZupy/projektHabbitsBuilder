@@ -35,10 +35,10 @@ public class ClientController {
         LocalDate date = LocalDate.now();
 
         // wszystkie habity
-        Iterable<Habit> habits = habitService.findAllByUserTime(userRepo.getById(id),date);
+//        Iterable<Habit> habits = habitService.findAllByUserTime(userRepo.getById(id),date);
 
-        model.addAttribute("habits",habits);
-        model.addAttribute("weeklyHabits",habitService.findAllByUser(userRepo.getById(id)));
+//        model.addAttribute("habits",habits);
+//        model.addAttribute("weeklyHabits",habitService.findAllByUser(userRepo.getById(id)));
 
 
 

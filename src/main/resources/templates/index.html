@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xlmns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>MainPage</title>
-    <link rel="stylesheet" th:href="@{/bootstrap3.css}">
+    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -36,13 +39,13 @@
 <div style="margin-left: 50px">
     <div class="page-header" style="margin-top: 20px">
         <div class="container">
-            <img src="Images/human.png" alt="human" style="width:100%; margin-left: 40px">
+            <img src="../static/Images/human.png" th:src="@{/Images/human.png}" alt="human" style="width:100%; margin-left: 40px">
             <div class="top-left">
                 <h1>Habits builder</h1>
                 <p class="lead">Popraw swoje nawyki</p>
 
-                <form th:action="@{/login}" method="post">
-                    <button class="btn btn-lg btn-secondary btn-block" type="button">Zaloguj się</button>
+                <form th:action="@{/login}" >
+                    <button class="btn btn-lg btn-secondary btn-block" type="submit">Zaloguj się</button>
                     <br/>
                 </form>
                 <a th:href="@{/register}" style="text-decoration: none;">Lub zarejestruj się</a>

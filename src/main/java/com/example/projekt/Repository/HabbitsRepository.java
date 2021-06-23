@@ -6,13 +6,16 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import com.example.projekt.Entities.User;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface HabbitsRepository extends CrudRepository<Habit, Long> {
 
-    public Iterable<Habit> getAllByUser(User user);
+    public List<Habit> getByUser(User user);
 
-    public Iterable<Habit> getAllByUserAndTodoTime(User user,LocalDate time);
 
+
+    Habit getHabitById(Long id);
 }
 

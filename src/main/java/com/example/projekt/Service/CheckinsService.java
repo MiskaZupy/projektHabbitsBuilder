@@ -1,8 +1,6 @@
 package com.example.projekt.Service;
 
 import com.example.projekt.Entities.Checkins;
-import com.example.projekt.Entities.Habit;
-import com.example.projekt.Entities.User;
 import com.example.projekt.Repository.CheckinsRepository;
 import com.example.projekt.Repository.HabbitsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -15,7 +15,8 @@ public class CoachService {
     public CoachRepository coachRepository;
     @Autowired
     public CoachService (CoachRepository coachRepository){this.coachRepository = coachRepository;}
+
     public Iterable<Coach> findAll() {return coachRepository.findAll(); }
-    public List<Long> findAllHabs(){return coachRepository.getAllIds();}
+    public Iterable<Coach> findAllHabs(){return coachRepository.getAllIds();}
     public Optional<Coach> findById(Long id){return coachRepository.findById(id);}
 }

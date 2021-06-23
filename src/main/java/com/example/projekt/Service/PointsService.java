@@ -1,13 +1,12 @@
 package com.example.projekt.Service;
 
-import com.example.projekt.Entities.Checkins;
 import com.example.projekt.Entities.Points;
-import com.example.projekt.Repository.CheckinsRepository;
 import com.example.projekt.Repository.PointsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Service
 public class PointsService {
 

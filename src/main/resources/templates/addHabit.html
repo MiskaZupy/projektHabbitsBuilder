@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new habbit</title>
+    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Habits Builder</a>
+        <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor01" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <a class="nav-link" th:href="@{/ClientPage}">Twój profil</a>
+                </li>
+                <li>
+                    <a class="nav-link" th:href="@{/clientPrizes}">Twoje osiągnięcia</a>
+                </li>
+                <li>
+                    <a class="nav-link" th:href="@{/addHabit}">Dodaj Habit</a>
+                </li>
+
+                <li>
+                    <a class="nav-link" th:href="@{/index}">Wyloguj się</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 60%">
+    <form th:action="@{/proces_add}" th:method="post" th:object="${habit}">
+
+        <div style="margin: 30px; ">
+            <h2>Utwórz nowy habit</h2>
+            <legend>Podaj dane</legend>
+            <label>Podaj nazwę</label>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nazwa" th:field="*{name}" required>
+            </div>
+            <br/>
+            <label>Podaj opis</label>
+            <div class="form-group">
+                <input type="text" class="form-control" id="desc" name="desc" placeholder="Opis" th:field="*{description}" required>
+            </div>
+
+
+            <label class="mt-4">Wybierz date</label>
+            <div>
+                <div>
+                    <label for="start">Data początkowa</label><br/>
+                    <input type="date" id="start" th:name="start"
+                           value="today"
+                           min="today" max="2021-12-31"
+                           th:field="*{todoTime}"
+
+                           required >
+                </div>
+            </div>
+            <br/>
+
+
+            <label>Podaj godzinę rozpoczęcia</label>
+            <br/>
+            <input type="time" id="appt" th:name="appt"  th:field="*{time}"
+                   min="00:00" max="23:59" required  >
+
+            <br/>
+            <br/>
+            <label>Podaj punkty</label>
+            <div class="form-group">
+                <input type="number" class="form-control" min="0" max="10" id="points" name="points" placeholder="Nazwa" th:field="*{points}" required>
+            </div>
+
+
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Utwórz habit</button>
+
+            </fieldset>
+
+
+
+
+        </div>
+    </form>
+
+</div>
+
+
+
+</body>
+</html>

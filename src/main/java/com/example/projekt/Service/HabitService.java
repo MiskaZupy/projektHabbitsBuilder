@@ -19,6 +19,7 @@ public class HabitService {
         this.habitRepo = habitRepo;
     }
 
+
     public Optional<Habit> findById(Long id) {
         return habitRepo.findById(id);
     }
@@ -27,11 +28,7 @@ public class HabitService {
         return habitRepo.findAll();
     }
 
-    public Iterable<Habit> findAllByUser(User user) {return habitRepo.getAllByUser(user);}
-
-    public Iterable<Habit> findAllByUserTime(User user, LocalDate time) {return habitRepo.getAllByUserAndTodoTime(user,time);}
-
-
+    public Iterable<Habit> findAllByUser(User user) {return habitRepo.getByUser(user);}
 
 
     public Habit save(Habit habit) {
@@ -50,7 +47,7 @@ public class HabitService {
         } else if (updates.containsKey("name")) {
             habit.setName(updates.get("name").toString());
         } else if (updates.containsKey("toDoTime")) {
-            habit.setTodoTime(LocalDate.parse(updates.get("toDoTime").toString()));
+            habit.setTodoTime(updates.get("toDoTime").toString());
         }else if (updates.containsKey("description")){
             habit.setDescription(updates.get("description").toString());
         }
