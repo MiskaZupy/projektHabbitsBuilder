@@ -52,9 +52,7 @@ public class HabitController {
     public void deleteHabitById (@RequestParam Long id){
         habitService.deleteById(id);
     }
-    /*
-    Coach controll
-     */
+
     @GetMapping("user/habit/coach")
     public Iterable<Coach> getCoachHabit(){return coachService.findAll();}
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
->
+
 <head>
     <meta charset="UTF-8">
     <title>Modify your habbit</title>
@@ -12,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Habits Builder</a>
+        <a class="navbar-brand" href="#" sec:authentication="name">Habits Builder</a>
         <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-target="#navbarColor01" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
@@ -91,10 +92,9 @@
             </div>
 
             <br/>
-            <br/>
             <label>Zmień status</label>
             <div class="form-group">
-                <input type="number" class="form-control" min="0" max="10" id="status" name="status" placeholder="Status"
+                <input type="text" class="form-control" min="0" max="10" id="status" name="status" placeholder="Status"
                        th:value="${status}" th:field="*{status}" required>
             </div>
 

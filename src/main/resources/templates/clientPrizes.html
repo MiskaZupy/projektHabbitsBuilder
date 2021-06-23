@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
 <head>
     <meta charset="UTF-8">
-    <title>Your achievements</title>
-    <link rel="stylesheet" href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
+    <title>YourPage</title>
+    <link rel="stylesheet"  href="../static/css/bootstrap3.css" th:href="@{/css/bootstrap3.css}">
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Habits Builder</a>
-        <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor01" data-toggle="collapse" type="button">
+        <a class="navbar-brand" href="#" sec:authentication="name">Habits Builder</a>
+        <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler" data-target="#navbarColor01" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -18,19 +23,18 @@
 
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="ClientPage.html">Twój profil</a>
+                    <a class="nav-link" th:href="@{/ClientPage}">Twój profil</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="clientPrizes.html">Twoje osiągnięcia</a>
+                    <a class="nav-link" th:href="@{/clientPrizes}">Twoje osiągnięcia</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="addHabit.html">Dodaj Habit</a>
+                    <a class="nav-link" th:href="@{/addHabit}">Dodaj Habit</a>
                 </li>
 
                 <li>
-                    <a class="nav-link" href="index.html">Wyloguj się</a>
+                    <a class="nav-link" th:href="@{/index}">Wyloguj się</a>
                 </li>
-
 
 
             </ul>
@@ -38,8 +42,55 @@
     </div>
 </nav>
 
+<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 90%; display: inline-block ">
+
+    <div style="margin: 10px"  >
+        <h1>Witaj [[${#request.remoteUser}]]!</h1>
+    </div>
+</div>
 
 
-<h1>Miejsce na osiągnięcia użytkownika</h1>
+<div class="card text-white bg-secondary mb-3" style=" margin: 10px; width: 90%; display: inline-grid">
+
+    <div style="margin: 10px">
+        <div>
+            <h2>Twoje osiągnięcia </h2>
+            <table class="table table-hover" style="table-layout: fixed">
+                <thead>
+                <tr class="table-primary">
+                    <th scope="row">Data</th>
+                    <th>Nazwa</th>
+
+
+                    <th></th>
+
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="checkins :${checkins}">
+                    <td th:text="${checkins.dateCheckin}">date</td>
+                    <td th:text="${checkins.habits.name}">idHabit</td>
+
+
+                </tr>
+
+                </tbody>
+
+
+            </table>
+            <tr th:each="points :${points}">
+                <h3>Liczba zdobytych punktów: [[${points.value}]] !</h3>
+            </tr>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
 </body>
 </html>

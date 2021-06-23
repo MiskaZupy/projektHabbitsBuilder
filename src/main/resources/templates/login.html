@@ -35,6 +35,9 @@
 
 
 <div class="card text-white bg-secondary mb-3" style=" margin: 50px; width: 40%">
+    <div th:if="${param.error}">
+        <p class="text-danger"> Invalid username or password</p>
+    </div>
     <form action="" method="post">
         <div style="margin: 30px;">
             <h2 style="margin-top: 20px">Login</h2>

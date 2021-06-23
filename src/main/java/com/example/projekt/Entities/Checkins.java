@@ -13,19 +13,26 @@ public class Checkins {
     private Long idCheckin;
 
     @Column(name = "date_checkin", nullable = false, length = 45)
-    private LocalDate dateCheckin;
+    public LocalDate dateCheckin;
 
     @ManyToOne
     @JoinColumn
-    private Habit habits; // 1 habbit to many checkins
+    public Habit habits;
     @ManyToOne
     @JoinColumn
-    private User user;  // 1 user to many checkins
+    private User user;
 
 
 
 
     public Checkins() {}
+
+    public Checkins(Long idCheckin, LocalDate dateCheckin, Habit habits, User user) {
+        this.idCheckin = idCheckin;
+        this.dateCheckin = dateCheckin;
+        this.habits = habits;
+        this.user = user;
+    }
 
     public Long getId() {
         return idCheckin;
@@ -39,8 +46,8 @@ public class Checkins {
         return dateCheckin;
     }
 
-    public void setCheckinDate(LocalDate checkinDate) {
-        this.dateCheckin = checkinDate;
+    public void setCheckinDate(LocalDate dateCheckin) {
+        this.dateCheckin = dateCheckin;
     }
 
     public Habit getHabbitsID() {

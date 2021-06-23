@@ -40,20 +40,5 @@ public class CheckinsController {
         return checkinsService.findAllByUser(id);
     }
 
-    @PostMapping("user/checkins")
-    public Checkins addCheckin(@RequestBody Checkins checkins) {
-        return checkinsService.save(checkins);
-    }
-
-    @PutMapping("user/checkins")
-    public Checkins updateHabit(@RequestParam Checkins checkins) {
-        return checkinsService.save(checkins);
-    }
-
-
-    @DeleteMapping("user/checkins")
-    public void deleteCheckinsById(@RequestParam Long id) {
-       checkinsService.deleteById(id);
-    }
 
 }

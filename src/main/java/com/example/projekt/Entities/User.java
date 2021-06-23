@@ -22,21 +22,12 @@ public class User {
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-//    @Column(name = "idHabits")
-//    @OneToMany()
-//    Set<Habit> habitsSet;
+
 
 
     public User() {
     }
-//
-//    public Habit getHabitsSet() {
-//        return habitSet;
-//    }
-//
-//    public void setHabitsSet(Set<Habit habitSet) {
-//        this.habitSet = habitSet;
-//    }
+
 
     public User(Long id, String email, String name, String password) {
         this.id = id;

@@ -24,7 +24,7 @@ public class HabitGenerator {
     private CoachService coachService;
 
     private boolean checkIfNotEmpty (User user){
-        // todo conect habits with users
+
         return IterableUtils.size(habitService.findAllByUser(user)) == 0;
     }
     private Iterable<Coach> getCoachHabList() { return  coachService.findAllHabs();}

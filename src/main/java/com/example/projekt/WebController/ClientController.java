@@ -17,13 +17,13 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/ClientPage")
 public class ClientController {
 
-//    private final UserHabitService userHabitsService;
+
     private final UserRepository userRepo;
     private final HabitService habitService;
 
 
     public ClientController( UserRepository userRepo, HabitService habitService){
-        // this.userHabitsService = userHabitsService;
+
         this.userRepo = userRepo;
         this.habitService = habitService;
     }
@@ -34,17 +34,6 @@ public class ClientController {
 
         LocalDate date = LocalDate.now();
 
-        // wszystkie habity
-//        Iterable<Habit> habits = habitService.findAllByUserTime(userRepo.getById(id),date);
-
-//        model.addAttribute("habits",habits);
-//        model.addAttribute("weeklyHabits",habitService.findAllByUser(userRepo.getById(id)));
-
-
-
-      // model.addAttribute("habits",);
-      // habity użytkownika w tym tygodniu
-      // model.addAttribute("weeklyHabits",userHabitsService.findAllByUser(userRepo.getById(id)));
 
         return "ClientPage";
     }

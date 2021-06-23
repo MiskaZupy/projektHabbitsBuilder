@@ -13,6 +13,7 @@ import java.util.List;
 public interface HabbitsRepository extends CrudRepository<Habit, Long> {
 
     public List<Habit> getByUser(User user);
+    public List<Habit> getById(Long id);
 
 
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+
+<body>
+<h1>Coś poszło nie tak :(</h1>
+<h2>Wróć do strony głównej przez gif:</h2>
+<div style="margin-left: 200px; margin-right: 200px" >
+    <a th:href="https://www.youtube.com/watch?v=dQw4w9WgXcQ%22%3E
+      <img src="../static/Images/giphy.gif" th:src="@{/Images/giphy.gif}" alt="gif" style="width:100%;">
+    </a>
+</div>
+
+
+</body>
+</html>

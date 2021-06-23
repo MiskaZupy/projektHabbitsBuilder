@@ -15,7 +15,7 @@ public class Points {
     @JoinColumn
     private User user;
     @Column(name = "value" )
-    private int value;
+    public int value;
 
     public Points() {}
 

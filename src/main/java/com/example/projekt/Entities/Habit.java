@@ -41,22 +41,6 @@ public class Habit {
     public Habit() {
     }
 
-//    public Habit( String name, String description, String todoTime, int points, String status) {
-//        this.name = name;
-//        this.description = description;
-//        this.todoTime = todoTime;
-//        this.points = points;
-//        this.status = status;
-//    }
-
-//    public Habit(String name, String description, String todoTime, int points, String status,Set<User> user) {
-//        this.name = name;
-//        this.description = description;
-//        this.todoTime = todoTime;
-//        this.points = points;
-//        this.status = status;
-//        this.user = user;
-//    }
     public Habit(String name, String description, String todoTime, String time, String status, int points) {
         this.name = name;
         this.description = description;
@@ -75,14 +59,6 @@ public class Habit {
         this.user =  user;
     }
 
-//    public Habit( String name, String description, String todoTime, String time, String status, int points, Set<User> user) {
-//        this.name = name;
-//        this.description = description;
-//        this.todoTime = todoTime;
-//        this.time = time;
-//        this.status = status;
-//        this.points = points;
-//    }
 
 
 
