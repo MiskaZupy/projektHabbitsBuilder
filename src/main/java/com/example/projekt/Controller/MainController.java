@@ -91,8 +91,8 @@ public class MainController {
     }
 
 
-    @GetMapping("/error")
-    public String error(){return "error";}
+//    @GetMapping("/error")
+//    public String error(){return "error";}
 
     @PostMapping("/process_register")
     public String processRegistration(User user){
